@@ -61,7 +61,7 @@ class ReStructuredTextParser(Parser):
         content = Content.load(self.read(path))
         html = publish_parts(content.body, writer_name="html5")
         filtered = hooks.filter(
-            "generate_menu", html, self.base_ext)
+            "generate_menu", html["html_body"], self.base_ext)
         self.write(path, dest, filtered)
         sys.stdout.write(
             "\x1b[1;32m{} converted to HTML. Metadata: {}\n".format(
