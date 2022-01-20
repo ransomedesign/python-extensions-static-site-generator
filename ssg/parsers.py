@@ -53,6 +53,8 @@ class MarkdownParser(Parser):
                 path.name, content)
         )
 
+        hooks.event("written")
+
 
 class ReStructuredTextParser(Parser):
     file_exts = [".rst"]
@@ -67,3 +69,5 @@ class ReStructuredTextParser(Parser):
             "\x1b[1;32m{} converted to HTML. Metadata: {}\n".format(
                 path.name, content)
         )
+
+        hooks.event("written")
